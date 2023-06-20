@@ -113,6 +113,8 @@ jobs:
           }
 
     env:
+      PYGAME_DETECT_AVX2: 'yes-why-not'
+
       # load pip config from this file. Define this in 'CIBW_ENVIRONMENT'
       # because this should not affect cibuildwheel machinery
       # also define environment variables needed for testing
@@ -161,7 +163,7 @@ jobs:
           key: macdep-${{ hashFiles('buildconfig/manylinux-build/**') }}-${{ hashFiles('buildconfig/macdependencies/*.sh') }}-${{ matrix.macarch }}
 
       - name: Build and test wheels
-        uses: pypa/cibuildwheel@v2.10.2
+        uses: pypa/cibuildwheel@v2.13.1
 
       - uses: actions/upload-artifact@v3
         with:
